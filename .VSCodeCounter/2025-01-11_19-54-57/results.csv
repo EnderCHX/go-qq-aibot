@@ -1,0 +1,10 @@
+"filename", "language", "Go Module File", "Go Checksum File", "Markdown", "Go", "comment", "blank", "total"
+"/home/enderchx/Documents/code/go/go-qq-aibot/Readme.md", "Markdown", 0, 0, 19, 0, 0, 3, 22
+"/home/enderchx/Documents/code/go/go-qq-aibot/ai/ai.go", "Go", 0, 0, 0, 5, 0, 2, 7
+"/home/enderchx/Documents/code/go/go-qq-aibot/ai/deepseek.go", "Go", 0, 0, 0, 98, 2, 13, 113
+"/home/enderchx/Documents/code/go/go-qq-aibot/config/config.go", "Go", 0, 0, 0, 33, 1, 8, 42
+"/home/enderchx/Documents/code/go/go-qq-aibot/go.mod", "Go Module File", 12, 0, 0, 0, 0, 3, 15
+"/home/enderchx/Documents/code/go/go-qq-aibot/go.sum", "Go Checksum File", 0, 25, 0, 0, 0, 1, 26
+"/home/enderchx/Documents/code/go/go-qq-aibot/main.go", "Go", 0, 0, 0, 7, 0, 4, 11
+"/home/enderchx/Documents/code/go/go-qq-aibot/qqbot/qqbot.go", "Go", 0, 0, 0, 26, 0, 5, 31
+"Total", "-", 12, 25, 19, 169, 3, 39, 267
