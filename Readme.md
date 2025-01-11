@@ -11,7 +11,7 @@
         "key" : "token",
         "nickname" : ["喵喵"],
         "command_prefix" : "#",
-        "superusers" : [qqid1, qqid2]
+        "superusers" : [123456789,987654321]
     },
     "deepseek" : {
         "api_url" : "https://api.deepseek.com/chat/completions",
