@@ -10,7 +10,7 @@ import (
 func init() {
 	c := config.GetConfig()
 	deepSeek := ai.DeepSeek{}
-	deepSeek.Init(c.DeepSeek.ApiUrl, c.DeepSeek.ApiKey, c.DeepSeek.SysPrompt)
+	deepSeek.Init(c.DeepSeek.ApiUrl, c.DeepSeek.ApiKey, c.DeepSeek.Model, c.DeepSeek.SysPrompt)
 
 	zero.OnMessage().Handle(func(ctx *zero.Ctx) {
 		if ctx.Event.IsToMe {

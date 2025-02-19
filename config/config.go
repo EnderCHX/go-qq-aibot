@@ -16,6 +16,7 @@ type QQBot struct {
 type DeepSeek struct {
 	ApiUrl    string `json:"api_url"`
 	ApiKey    string `json:"api_key"`
+	Model     string `json:"model"`
 	SysPrompt string `json:"sys_prompt"`
 }
 

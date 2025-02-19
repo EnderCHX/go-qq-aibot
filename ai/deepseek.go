@@ -2,6 +2,7 @@ package ai
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strings"
 )
@@ -9,6 +10,7 @@ import (
 type DeepSeek struct {
 	ApiUrl    string
 	ApiKey    string
+	Model     string
 	SysPrompt string
 }
 
@@ -59,15 +61,17 @@ const (
 	RoleAssistant = "assistant"
 )
 
-func (d *DeepSeek) Init(apiurl, apikey, sysprompt string) {
+func (d *DeepSeek) Init(apiurl, apikey, model, sysprompt string) {
 	d.ApiUrl = apiurl
 	d.ApiKey = apikey
+	d.Model = model
 	d.SysPrompt = sysprompt
 }
 
 func (d *DeepSeek) GetMessage(question string) (string, error) {
+	fmt.Println("req api")
 	requestBody := DeepSeekRequestBody{
-		Model: "deepseek-chat",
+		Model: d.Model,
 		Messages: []struct {
 			Role    string `json:"role"`
 			Content string `json:"content"`
@@ -106,7 +110,8 @@ func (d *DeepSeek) GetMessage(question string) (string, error) {
 		}
 		// log.Println("message:", requestBody.Messages)
 		// log.Println("responseBody:", responseBody.Choices)
-		return responseBody.Choices[0].Message.Content, nil
+		result := strings.ReplaceAll(responseBody.Choices[0].Message.Content, "\n", "")
+		return result, nil
 	}
 	return "", nil
 }
