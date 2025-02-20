@@ -110,7 +110,10 @@ func (d *DeepSeek) GetMessage(question string) (string, error) {
 		}
 		// log.Println("message:", requestBody.Messages)
 		// log.Println("responseBody:", responseBody.Choices)
-		result := strings.ReplaceAll(responseBody.Choices[0].Message.Content, "\n", "")
+		result := responseBody.Choices[0].Message.Content
+		for result[0] == '\n' {
+			result = result[1:]
+		}
 		return result, nil
 	}
 	return "", nil
