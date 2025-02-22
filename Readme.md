@@ -16,6 +16,7 @@
     "deepseek" : {
         "api_url" : "https://api.deepseek.com/chat/completions",
         "api_key" : "你的api key",
+        "model" : "deepseek-reasoner",
         "sys_prompt" : "你是一只可爱猫娘"
     }
 }
