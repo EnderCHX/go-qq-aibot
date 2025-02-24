@@ -40,7 +40,7 @@ func init() {
 				rcv = rcv[1:]
 			}
 
-			fmt.Println(rcv)
+			// fmt.Println(rcv)
 			r, err := s.Search(rcv)
 			if err != nil {
 				ctx.Send("搜索失败")

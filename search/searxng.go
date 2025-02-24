@@ -102,7 +102,7 @@ func (r *ResultsContent) GetContents() *ResultsContent {
 	for i, _ := range r.Contents {
 		wg.Add(1)
 		go func(index int, wg *sync.WaitGroup) {
-			fmt.Println(index)
+			// fmt.Println(index)
 			res, err := http.Get(r.Contents[index].Url)
 			if err != nil {
 				r.Contents[index].Content = err.Error()
@@ -129,7 +129,6 @@ func (r *ResultsContent) GetContents() *ResultsContent {
 				svg, canvas 
 			`).Remove()
 
-			// 清理隐藏内容
 			doc.Find("*").FilterFunction(func(i int, s *goquery.Selection) bool {
 				if style, exists := s.Attr("style"); exists {
 					return strings.Contains(strings.ToLower(style), "display:none") ||
@@ -143,12 +142,12 @@ func (r *ResultsContent) GetContents() *ResultsContent {
 			r.Contents[index].Content = strings.ReplaceAll(r.Contents[index].Content, "\t", " ")
 			r.Contents[index].Content = strings.ReplaceAll(r.Contents[index].Content, "  ", " ")
 
-			fmt.Println(index)
+			// fmt.Println(index)
 			wg.Done()
 		}(i, wg)
 	}
 	wg.Wait()
-	fmt.Println(r)
+	// fmt.Println(r)
 	return r
 }
 
