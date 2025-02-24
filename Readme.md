@@ -18,6 +18,9 @@
         "api_key" : "你的api key",
         "model" : "deepseek-reasoner",
         "sys_prompt" : "你是一只可爱猫娘"
+    },
+    "websearch" : {
+        "api_url" : "your searxng api url",
     }
 }
 ```
