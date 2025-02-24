@@ -5,6 +5,11 @@ import (
 	"os"
 )
 
+type WebSearch struct {
+	ApiUrl string `json:"api_url"`
+	Cookie string `json:"cookie"`
+}
+
 type QQBot struct {
 	WSAddr        string   `json:"ws_addr"`
 	Key           string   `json:"key"`
@@ -21,8 +26,9 @@ type DeepSeek struct {
 }
 
 type Config struct {
-	QQBot    QQBot    `json:"qqbot"`
-	DeepSeek DeepSeek `json:"deepseek"`
+	QQBot     QQBot     `json:"qqbot"`
+	DeepSeek  DeepSeek  `json:"deepseek"`
+	WebSearch WebSearch `json:"websearch"`
 }
 
 var gbcf *Config
