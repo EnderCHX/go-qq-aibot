@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 	"strings"
 	"sync"
 
@@ -24,6 +25,7 @@ func (s *SearXNG) Search(query string) (Result, error) {
 	if s.url[len(s.url)-1] == '/' {
 		s.url = s.url[:len(s.url)-1]
 	}
+	query = url.QueryEscape(query)
 	url := s.url + "/search?q=" + query + "&format=json"
 
 	fmt.Println(url)
