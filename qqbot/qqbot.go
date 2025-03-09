@@ -3,7 +3,7 @@ package qqbot
 import (
 	"fmt"
 
-	"github.com/EnderCHX/go-qq-aibot/ai"
+	"github.com/EnderCHX/go-qq-aibot/ai/chat"
 	"github.com/EnderCHX/go-qq-aibot/config"
 	"github.com/EnderCHX/go-qq-aibot/search"
 	zero "github.com/wdvxdr1123/ZeroBot"
@@ -12,7 +12,7 @@ import (
 
 func init() {
 	c := config.GetConfig()
-	deepSeek := ai.DeepSeek{}
+	deepSeek := chat.DeepSeek{}
 	deepSeek.Init(c.DeepSeek.ApiUrl, c.DeepSeek.ApiKey, c.DeepSeek.Model, c.DeepSeek.SysPrompt)
 
 	s := search.NewSearXNG(c.WebSearch.ApiUrl)
@@ -26,7 +26,7 @@ func init() {
 				rcv = rcv[1:]
 			}
 
-			if rcv[:len("websearch")] != "websearch" {
+			if rcv[:len("websearch")] != "websearch" || len(rcv) <= len("websearch") {
 
 				msg, _ := deepSeek.GetMessage(rcv)
 				ctx.Send(msg)
