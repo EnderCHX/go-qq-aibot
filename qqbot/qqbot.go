@@ -26,11 +26,15 @@ func init() {
 				rcv = rcv[1:]
 			}
 
-			if rcv[:len("websearch")] != "websearch" || len(rcv) <= len("websearch") {
-
+			if len(rcv) <= len("websearch") {
 				msg, _ := deepSeek.GetMessage(rcv)
 				ctx.Send(msg)
+				return
+			}
 
+			if rcv[:len("websearch")] != "websearch" {
+				msg, _ := deepSeek.GetMessage(rcv)
+				ctx.Send(msg)
 				return
 			}
 
