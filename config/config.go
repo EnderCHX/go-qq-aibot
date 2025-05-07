@@ -25,10 +25,19 @@ type DeepSeek struct {
 	SysPrompt string `json:"sys_prompt"`
 }
 
+type Redis struct {
+	Host     string `json:"host"`
+	Port     string `json:"port"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	DB       int    `json:"db"`
+}
+
 type Config struct {
 	QQBot     QQBot     `json:"qqbot"`
 	DeepSeek  DeepSeek  `json:"deepseek"`
 	WebSearch WebSearch `json:"websearch"`
+	Redis     Redis     `json:"redis"`
 }
 
 var gbcf *Config

@@ -1,0 +1,910 @@
+{
+  "iRet": 0,
+  "sMsg": "ok",
+  "sIdeUrl": "comm.ams.game.qq.com/ide/",
+  "tokens": {
+    "95ookO": "316964",
+    "sTzZS2": "316965",
+    "Gp2Dsc": "316966",
+    "6fr9BC": "316967",
+    "KfXJwH": "316968",
+    "NoOapI": "316969",
+    "7bp9mN": "316970",
+    "8ModUd": "316971",
+    "hgIcag": "316972",
+    "gZJOnC": "316973",
+    "K9YqyB": "317579",
+    "ZjjyEz": "317586",
+    "d4RUFC": "317590",
+    "QIRBwm": "317814",
+    "Plaqzy": "318948",
+    "zMemOt": "319386",
+    "jvCT1e": "323453",
+    "OC6Loa": "323461",
+    "KVVx85": "323462",
+    "CXE0rF": "327679",
+    "qkJMkB": "329101",
+    "YWRywA": "352143",
+    "MHw478": "352145",
+    "Zek01X": "352246",
+    "vr1ZhS": "365586",
+    "HNTQo2": "365587",
+    "bQaMCQ": "365589",
+    "FDNRsR": "369172",
+    "k5DDpF": "371602",
+    "ZvTW7M": "380917",
+    "OaRkYy": "380918",
+    "GDzRVM": "384852",
+    "jm7SER": "384914",
+    "mbq5GZ": "384918",
+    "0aG9yx": "384920",
+    "cbw8pY": "384923",
+    "v56Iom": "392974",
+    "PoM5a7": "396273"
+  },
+  "flows": {
+    "316964": {
+      "sIdeToken": "95ookO",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "1",
+      "isLogin": "1",
+      "sName": "查询绑定",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "bindarea#query_map_id#",
+      "iType": "1",
+      "iResId": "211978",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": null,
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "",
+          "desc": null
+        }
+      ],
+      "iCustom": "0",
+      "sAreaService": "dfm"
+    },
+    "316965": {
+      "sIdeToken": "sTzZS2",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "1",
+      "isLogin": "1",
+      "sName": "提交绑定",
+      "iAreaChooseType": "2",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "bindarea#bind_map_id#",
+      "iType": "1",
+      "iResId": "211978",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": null,
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "",
+          "desc": null
+        }
+      ],
+      "iCustom": "0",
+      "sAreaService": "dfm"
+    },
+    "316967": {
+      "sIdeToken": "6fr9BC",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "帖子评论图片【小程序版本】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "source",
+          "desc": ""
+        },
+        {
+          "key": "file",
+          "desc": "上传文件的base64编码"
+        },
+        {
+          "key": "checkType",
+          "desc": "1-帖子图片，2-帖子封面，3-评论图片"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "316968": {
+      "sIdeToken": "KfXJwH",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "社区主入口【未绑定角色】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "param",
+          "desc": ""
+        },
+        {
+          "key": "method",
+          "desc": ""
+        },
+        {
+          "key": "source",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "316969": {
+      "sIdeToken": "NoOapI",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "社区主入口【大区绑定】",
+      "iAreaChooseType": "1",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "param",
+          "desc": ""
+        },
+        {
+          "key": "method",
+          "desc": ""
+        },
+        {
+          "key": "source",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "316970": {
+      "sIdeToken": "7bp9mN",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "读取静态配置【小程序版本】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "groups",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "316972": {
+      "sIdeToken": "hgIcag",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "通用图片【小程序版本】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "source",
+          "desc": ""
+        },
+        {
+          "key": "file",
+          "desc": "上传文件的base64编码"
+        },
+        {
+          "key": "checkType",
+          "desc": "1-头像，2-用户意见"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "317590": {
+      "sIdeToken": "d4RUFC",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "0",
+      "sName": "帖子评论图片【pixui版本】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "source",
+          "desc": ""
+        },
+        {
+          "key": "openid",
+          "desc": ""
+        },
+        {
+          "key": "platid",
+          "desc": ""
+        },
+        {
+          "key": "areaid",
+          "desc": ""
+        },
+        {
+          "key": "roleid",
+          "desc": ""
+        },
+        {
+          "key": "gameid",
+          "desc": ""
+        },
+        {
+          "key": "channelid",
+          "desc": ""
+        },
+        {
+          "key": "acctype",
+          "desc": ""
+        },
+        {
+          "key": "appid",
+          "desc": ""
+        },
+        {
+          "key": "access_token",
+          "desc": ""
+        },
+        {
+          "key": "iUin",
+          "desc": ""
+        },
+        {
+          "key": "checkType",
+          "desc": "1-帖子图片，2-帖子封面，3-评论图片"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "317814": {
+      "sIdeToken": "QIRBwm",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "1",
+      "isLogin": "1",
+      "sName": "【通用】查询角色基本信息",
+      "iAreaChooseType": "1",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": null,
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "seasonid",
+          "desc": "赛季id（默认为0）"
+        },
+        {
+          "key": "isrank",
+          "desc": "1-仅查询排位赛0-查询全部"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "318948": {
+      "sIdeToken": "Plaqzy",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "1",
+      "isLogin": "1",
+      "sName": "查询资产-干员信息",
+      "iAreaChooseType": "1",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": null,
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "item_id_Operator",
+          "desc": "物品ID(选填，填0则不读取该参数)"
+        },
+        {
+          "key": "prop_gid_Operator",
+          "desc": "物品GID(选填，填0则不读取该参数)"
+        },
+        {
+          "key": "item_id_Skin",
+          "desc": "皮肤物品ID(选填，填0则不读取该参数)"
+        },
+        {
+          "key": "prop_gid_Skin",
+          "desc": "皮肤物品GID(选填，填0则不读取该参数)"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "319386": {
+      "sIdeToken": "zMemOt",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "1",
+      "isLogin": "1",
+      "sName": "查询流水信息|战绩",
+      "iAreaChooseType": "1",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": null,
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "type",
+          "desc": "查询类型（1：登录，2：道具，3：货币,4:战绩）"
+        },
+        {
+          "key": "item",
+          "desc": "查询参数，例子：1,2,3,4类推，以,分割"
+        },
+        {
+          "key": "page",
+          "desc": "战绩当前页"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "329101": {
+      "sIdeToken": "qkJMkB",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "查询小时物品均价",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": null,
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "propid",
+          "desc": "道具id（格式：1,2,2,2,2）"
+        },
+        {
+          "key": "stat_hour",
+          "desc": "开始时间（格式：2024091116）"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "352143": {
+      "sIdeToken": "YWRywA",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "0",
+      "sName": "社区主入口【无需登录】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "param",
+          "desc": ""
+        },
+        {
+          "key": "method",
+          "desc": ""
+        },
+        {
+          "key": "source",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "352145": {
+      "sIdeToken": "MHw478",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "0",
+      "sName": "读取静态配置【无需登录】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "groups",
+          "desc": ""
+        },
+        {
+          "key": "type",
+          "desc": "banner-广告位，calendar-日历"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "352246": {
+      "sIdeToken": "Zek01X",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "0",
+      "sName": "查询小时物品均价【无需登录】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "propid",
+          "desc": "道具id（格式：1,2,2,2,2）"
+        },
+        {
+          "key": "stat_hour",
+          "desc": "开始时间（格式：2024091116）"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "365587": {
+      "sIdeToken": "HNTQo2",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "小程序消息订阅入口",
+      "iAreaChooseType": "1",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "method",
+          "desc": "接口"
+        },
+        {
+          "key": "placeType",
+          "desc": "特勤处类型"
+        },
+        {
+          "key": "source",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "365589": {
+      "sIdeToken": "bQaMCQ",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "1",
+      "isLogin": "1",
+      "sName": "查询制造处状态",
+      "iAreaChooseType": "1",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": null,
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "source",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "369172": {
+      "sIdeToken": "FDNRsR",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "0",
+      "sName": "查询openid基本信息",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "openid",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "371602": {
+      "sIdeToken": "k5DDpF",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "0",
+      "sName": "gopenid转openid",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "gopenid",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "380918": {
+      "sIdeToken": "OaRkYy",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "周报好友点赞",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "friend",
+          "desc": "接口"
+        },
+        {
+          "key": "source",
+          "desc": ""
+        },
+        {
+          "key": "statDate",
+          "desc": "统计周期"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "384852": {
+      "sIdeToken": "GDzRVM",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "【通用】小程序消息订阅入口",
+      "iAreaChooseType": "1",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "method",
+          "desc": "接口"
+        },
+        {
+          "key": "source",
+          "desc": ""
+        },
+        {
+          "key": "templateids",
+          "desc": "逗号分割"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "384918": {
+      "sIdeToken": "mbq5GZ",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "【共建】社区入口【未绑定角色】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "param",
+          "desc": ""
+        },
+        {
+          "key": "method",
+          "desc": ""
+        },
+        {
+          "key": "source",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "384920": {
+      "sIdeToken": "0aG9yx",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "0",
+      "sName": "【共建】社区入口【无需登录】",
+      "iAreaChooseType": "0",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "param",
+          "desc": ""
+        },
+        {
+          "key": "method",
+          "desc": ""
+        },
+        {
+          "key": "source",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "384923": {
+      "sIdeToken": "cbw8pY",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "【共建】社区入口【大区绑定】",
+      "iAreaChooseType": "1",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "param",
+          "desc": ""
+        },
+        {
+          "key": "method",
+          "desc": ""
+        },
+        {
+          "key": "source",
+          "desc": ""
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    },
+    "392974": {
+      "sIdeToken": "v56Iom",
+      "sAccountType": "7",
+      "bNeedIBaseUin": "0",
+      "isLogin": "1",
+      "sName": "【福利站】入口",
+      "iAreaChooseType": "1",
+      "sServiceType": "dfm",
+      "sIdeUrl": "comm.ams.game.qq.com/ide/",
+      "sTplType": "default",
+      "iType": "1",
+      "iResId": "0",
+      "targetAppId": "wx39308a0a1bd83d22",
+      "sAMSTrusteeship": "1",
+      "targetQQAppId": "1110543085",
+      "appName": "",
+      "sGmiFlowId": "f0",
+      "iCaptcha": "0",
+      "inputParams": [
+        {
+          "key": "method",
+          "desc": "请求路径"
+        },
+        {
+          "key": "param",
+          "desc": "参数"
+        },
+        {
+          "key": "accType",
+          "desc": "qq or wx"
+        }
+      ],
+      "iCustom": "1",
+      "sAreaService": "dfm"
+    }
+  },
+  "default_tpls": [
+    {
+      "tpl": "bind_area",
+      "tpl_name": "大区角色绑定",
+      "query_map_id": "316964",
+      "query_map_token": "95ookO",
+      "bind_map_id": "316965",
+      "bind_map_token": "sTzZS2",
+      "sServiceType": "dfm"
+    }
+  ],
+  "iPaaSId": "661959"
+}
