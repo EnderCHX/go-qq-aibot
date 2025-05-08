@@ -18,6 +18,7 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func init() {
@@ -90,7 +91,20 @@ func init() {
 		}
 
 		if match, err := regexp.MatchString("^帮助$", msg); err == nil && match {
-			ctx.Send("命令前缀为\"df\"、\"△\"、\"三角洲\"\n用法: 命令前缀加以下命令：\n1. 设置ck\n2. 密码\n3. 近日收益\n 4.战绩")
+			//"命令前缀为\"df\"、\"△\"、\"三角洲\"\n用法: 命令前缀加以下命令：\n1. 设置ck\n2. 密码\n3. 近日收益\n 4.战绩"
+			ctx.Send([]message.Segment{
+				message.Text("命令前缀为\"df\"、\"△\"、\"三角洲\"\n"),
+				message.Text("用法: 命令前缀加以下命令：\n"),
+				message.Text("1. 设置ck\n"),
+				message.Text("2. 密码\n"),
+				message.Text("3. 近日收益\n"),
+				message.Text("4. 战绩\n"),
+				message.Text("5. 大红\n"),
+				message.Text("6. 登录记录(page int)\n"),
+				message.Text("7. 道具(page int)\n"),
+				message.Text("8. 哈夫币(page int)\n"),
+				message.Text("9. 战局(page int)\n"),
+			})
 		}
 
 		if match, err := regexp.MatchString("^设置ck*", msg); err == nil && match {
@@ -107,16 +121,55 @@ func init() {
 			ctx.Send("设置成功")
 		}
 
-		if match, err := regexp.MatchString("^战绩$", msg); err == nil && match {
-			achieve_data, err1 := df.GetAchievements(fmt.Sprint(ctx.Event.UserID))
-			kd_data, err2 := df.GetKd(fmt.Sprint(ctx.Event.UserID))
-			if err1 != nil {
+		if match, err := regexp.MatchString("^大红$", msg); err == nil && match {
+			data, err := df.GetAchievements(fmt.Sprint(ctx.Event.UserID))
+			if err != nil {
 				ctx.SendChain(
 					message.Reply(ctx.Event.MessageID),
-					message.Text("失败: "+err1.Error()),
+					message.Text("失败: "+err.Error()),
 				)
 				return
 			}
+
+			jData, _ := sonic.Get(data, "jData", "data", "data", "solDetail")
+			redTotalMoney, _ := jData.Get("redTotalMoney").Int64()
+			redTotalCount, _ := jData.Get("redTotalCount").Int64()
+			redCollectionDetail := jData.Get("redCollectionDetail")
+			redCollectionDetailLen := func() int {
+				redCollectionDetailArr, _ := redCollectionDetail.Array()
+				return len(redCollectionDetailArr)
+			}()
+
+			msgChain := []message.Segment{
+				message.Reply(ctx.Event.MessageID),
+				message.Text(fmt.Sprintf("收藏大红价值: %v\n收藏大红数量: %v\n", redTotalMoney, redTotalCount)),
+			}
+
+			for i := 0; i < redCollectionDetailLen; i++ {
+				objectID, _ := redCollectionDetail.Index(i).Get("objectID").Int64()
+				count, _ := redCollectionDetail.Index(i).Get("count").Int64()
+				price, _ := redCollectionDetail.Index(i).Get("price").Int64()
+				m := message.Text(fmt.Sprintf("%v(%v): %v\n",
+					item.ItemMap[int(objectID)].ObjectName,
+					price,
+					count,
+				))
+				msgChain = append(msgChain, m)
+			}
+
+			ctx.Send(msgChain)
+		}
+
+		if match, err := regexp.MatchString("^战绩$", msg); err == nil && match {
+			//achieve_data, err1 := df.GetAchievements(fmt.Sprint(ctx.Event.UserID))
+			kd_data, err2 := df.GetKd(fmt.Sprint(ctx.Event.UserID))
+			//if err1 != nil {
+			//	ctx.SendChain(
+			//		message.Reply(ctx.Event.MessageID),
+			//		message.Text("失败: "+err1.Error()),
+			//	)
+			//	return
+			//}
 			if err2 != nil {
 				ctx.SendChain(
 					message.Reply(ctx.Event.MessageID),
@@ -125,9 +178,9 @@ func init() {
 				return
 			}
 
-			jData, _ := sonic.Get(achieve_data, "jData", "data", "data", "solDetail")
-			redTotalMoney, _ := jData.Get("redTotalMoney").Int64()
-			redTotalCount, _ := jData.Get("redTotalCount").Int64()
+			//jData, _ := sonic.Get(achieve_data, "jData", "data", "data", "solDetail")
+			//redTotalMoney, _ := jData.Get("redTotalMoney").Int64()
+			//redTotalCount, _ := jData.Get("redTotalCount").Int64()
 			//redCollectionDetail, _ := jData.Get("redCollectionDetail").Array()
 
 			jData2, _ := sonic.Get(kd_data, "jData")
@@ -157,8 +210,8 @@ func init() {
 				message.Reply(ctx.Event.MessageID),
 				message.Image(picurl),
 				message.Text(fmt.Sprintf("角色: %v\n", charac_name)),
-				message.Text(fmt.Sprintf("收藏大红价值: %v\n", redTotalMoney)),
-				message.Text(fmt.Sprintf("收藏大红数量: %v\n", redTotalCount)),
+				//message.Text(fmt.Sprintf("收藏大红价值: %v\n", redTotalMoney)),
+				//message.Text(fmt.Sprintf("收藏大红数量: %v\n", redTotalCount)),
 				message.Text(fmt.Sprintf("烽火排位分数: %v\n", rankpoint)),
 				message.Text(fmt.Sprintf("烽火总对局: %v\n", soltotalfght)),
 				message.Text(fmt.Sprintf("烽火总撤离: %v\n", solttotalescape)),
@@ -222,6 +275,214 @@ func init() {
 		}
 
 		if matchDefault, match, err := func() (bool, bool, error) {
+			matchDefault, err1 := regexp.MatchString(`^登录记录$`, msg)
+			match, err2 := regexp.MatchString(`^登录记录\d+$`, msg)
+			if err1 != nil || err2 != nil {
+				return matchDefault, match, errors.New("error: " + err1.Error() + err2.Error())
+			}
+			return matchDefault, match, nil
+		}(); err == nil && (match || matchDefault) {
+			var page int
+			if matchDefault {
+				page = 1
+			}
+			if match {
+				page, _ = strconv.Atoi(msg[len("登录记录"):])
+			}
+
+			startIndex := func() int {
+				if page%10 != 0 {
+					return (page%10 - 1) * 5
+				} else {
+					return 9 * 5
+				}
+			}()
+			endIndex := func() int {
+				if page%10 != 0 {
+					return (page % 10) * 5
+				} else {
+					return 10 * 5
+				}
+			}()
+
+			data, err := df.GetBattle(fmt.Sprint(ctx.Event.UserID), page, 1)
+
+			if err != nil {
+				ctx.SendChain(
+					message.Reply(ctx.Event.MessageID),
+					message.Text("失败: "+err.Error()),
+				)
+				return
+			}
+			jData, _ := sonic.Get(data, "jData", "data")
+			vRoleName, _ := jData.Get("vRoleName").String()
+			loginDay, _ := jData.Get("loginDay").String()
+			Level, _ := jData.Get("Level").Int64()
+			LoginArr := jData.Get("LoginArr")
+			LoginArrLen := func() int {
+				iA, _ := LoginArr.Array()
+				return len(iA)
+			}()
+
+			msgChain := []message.Segment{
+				message.Reply(ctx.Event.MessageID),
+				message.Text(fmt.Sprintf("角色: %v 登录天数: %v 等级: %v\n", vRoleName, loginDay, Level)),
+			}
+
+			for i := startIndex; i < endIndex && i < LoginArrLen; i++ {
+
+				indtEventTime, _ := LoginArr.Index(i).Get("indtEventTime").String()
+				outdtEventTime, _ := LoginArr.Index(i).Get("outdtEventTime").String()
+				vClientIP, _ := LoginArr.Index(i).Get("vClientIP").String()
+				SystemHardware, _ := LoginArr.Index(i).Get("SystemHardware").String()
+
+				m := message.Text(fmt.Sprintf("设备%v, IP %v, 上线时间%v, 下线时间%v\n",
+					SystemHardware,
+					vClientIP,
+					indtEventTime,
+					outdtEventTime,
+				))
+				msgChain = append(msgChain, m)
+			}
+			ctx.Send(msgChain)
+		}
+
+		if matchDefault, match, err := func() (bool, bool, error) {
+			matchDefault, err1 := regexp.MatchString(`^道具$`, msg)
+			match, err2 := regexp.MatchString(`^道具\d+$`, msg)
+			if err1 != nil || err2 != nil {
+				return matchDefault, match, errors.New("error: " + err1.Error() + err2.Error())
+			}
+			return matchDefault, match, nil
+		}(); err == nil && (match || matchDefault) {
+			var page int
+			if matchDefault {
+				page = 1
+			}
+			if match {
+				page, _ = strconv.Atoi(msg[len("道具"):])
+			}
+
+			startIndex := func() int {
+				if page%10 != 0 {
+					return (page%10 - 1) * 5
+				} else {
+					return 9 * 5
+				}
+			}()
+			endIndex := func() int {
+				if page%10 != 0 {
+					return (page % 10) * 5
+				} else {
+					return 10 * 5
+				}
+			}()
+
+			data, err := df.GetBattle(fmt.Sprint(ctx.Event.UserID), page, 2)
+
+			if err != nil {
+				ctx.SendChain(
+					message.Reply(ctx.Event.MessageID),
+					message.Text("失败: "+err.Error()),
+				)
+				return
+			}
+			jData, _ := sonic.Get(data, "jData", "data")
+			itemArr := jData.Get("itemArr")
+			itemArrLen := func() int {
+				iA, _ := itemArr.Array()
+				return len(iA)
+			}()
+
+			msgChain := []message.Segment{
+				message.Reply(ctx.Event.MessageID),
+			}
+
+			for i := startIndex; i < endIndex && i < itemArrLen; i++ {
+				dtEventTime, _ := itemArr.Index(i).Get("dtEventTime").String()
+				Name, _ := itemArr.Index(i).Get("Name").String()
+				AfterCount, _ := itemArr.Index(i).Get("AfterCount").Int64()
+				AddOrReduce, _ := itemArr.Index(i).Get("AddOrReduce").Int64()
+				Reason, _ := itemArr.Index(i).Get("Reason").String()
+				Reason, _ = url.QueryUnescape(Reason)
+				m := message.Text(fmt.Sprintf("在%v %v %v %v 剩余%v\n",
+					dtEventTime,
+					Reason,
+					Name,
+					AddOrReduce,
+					AfterCount,
+				))
+				msgChain = append(msgChain, m)
+			}
+			ctx.Send(msgChain)
+		}
+
+		if matchDefault, match, err := func() (bool, bool, error) {
+			matchDefault, err1 := regexp.MatchString(`^哈夫币$`, msg)
+			match, err2 := regexp.MatchString(`^哈夫币\d+$`, msg)
+			if err1 != nil || err2 != nil {
+				return matchDefault, match, errors.New("error: " + err1.Error() + err2.Error())
+			}
+			return matchDefault, match, nil
+		}(); err == nil && (match || matchDefault) {
+			var page int
+			if matchDefault {
+				page = 1
+			}
+			if match {
+				page, _ = strconv.Atoi(msg[len("哈夫币"):])
+			}
+
+			startIndex := func() int {
+				if page%10 != 0 {
+					return (page%10 - 1) * 5
+				} else {
+					return 9 * 5
+				}
+			}()
+			endIndex := func() int {
+				if page%10 != 0 {
+					return (page % 10) * 5
+				} else {
+					return 10 * 5
+				}
+			}()
+
+			data, err := df.GetBattle(fmt.Sprint(ctx.Event.UserID), page, 3)
+
+			if err != nil {
+				ctx.SendChain(
+					message.Reply(ctx.Event.MessageID),
+					message.Text("失败: "+err.Error()),
+				)
+				return
+			}
+			jData, _ := sonic.Get(data, "jData", "data")
+			totalMoney, _ := jData.Get("0").Get("totalMoney").Int64()
+			iMoneyArr := jData.Get("iMoneyArr")
+			iMoneyArrLen := func() int {
+				iA, _ := iMoneyArr.Array()
+				return len(iA)
+			}()
+
+			msgChain := []message.Segment{
+				message.Reply(ctx.Event.MessageID),
+				message.Text(fmt.Sprintf("总哈夫币: %v\n", totalMoney)),
+			}
+
+			for i := startIndex; i < endIndex && i < iMoneyArrLen; i++ {
+				dtEventTime, _ := iMoneyArr.Index(i).Get("dtEventTime").String()
+				leftMoney, _ := iMoneyArr.Index(i).Get("leftMoney").Int64()
+				AddOrReduce, _ := iMoneyArr.Index(i).Get("AddOrReduce").String()
+				Reason, _ := iMoneyArr.Index(i).Get("Reason").String()
+				Reason, _ = url.QueryUnescape(Reason)
+				m := message.Text(fmt.Sprintf("在%v %v %v 剩余%v\n", dtEventTime, Reason, AddOrReduce, leftMoney))
+				msgChain = append(msgChain, m)
+			}
+			ctx.Send(msgChain)
+		}
+
+		if matchDefault, match, err := func() (bool, bool, error) {
 			matchDefault, err1 := regexp.MatchString(`^战局$`, msg)
 			match, err2 := regexp.MatchString(`^战局\d+$`, msg)
 			if err1 != nil || err2 != nil {
@@ -252,7 +513,7 @@ func init() {
 				}
 			}()
 
-			data, err := df.GetBattle(fmt.Sprint(ctx.Event.UserID), page)
+			data, err := df.GetBattle(fmt.Sprint(ctx.Event.UserID), page, 4)
 
 			if err != nil {
 				ctx.SendChain(
@@ -303,6 +564,42 @@ func init() {
 				msgChan = append(msgChan, message.Text("没有战局"))
 			}
 			ctx.Send(msgChan)
+		}
+
+		if match, err := regexp.MatchString("^特勤处制造$", msg); err == nil && match {
+			data, err := df.GetManufacture(fmt.Sprint(ctx.Event.UserID))
+			if err != nil {
+				ctx.SendChain(
+					message.Reply(ctx.Event.MessageID),
+					message.Text("失败: "+err.Error()),
+				)
+				return
+			}
+			placeData, _ := sonic.Get(data, "jData", "data", "data", "placeData")
+			msgChain := []message.Segment{
+				message.Reply(ctx.Event.MessageID),
+			}
+			placeDataLen := func() int { placeDataArr, _ := placeData.Array(); return len(placeDataArr) }()
+			for i := 0; i < placeDataLen; i++ {
+				Status, _ := placeData.Index(i).Get("Status").String()
+				placeName, _ := placeData.Index(i).Get("placeName").String()
+				if Status == "闲置中" {
+					m := message.Text(fmt.Sprintf("%v: %v\n", placeName, Status))
+					msgChain = append(msgChain, m)
+				} else {
+					leftTime, _ := placeData.Index(i).Get("leftTime").Int64()
+					pushTime, _ := placeData.Index(i).Get("pushTime").Int64()
+					objectId, _ := placeData.Index(i).Get("objectId").Int64()
+					m := message.Text(fmt.Sprintf("%v: 生产%v中, 剩余时间%vmin, 制造完成时间%v\n",
+						placeName,
+						item.ItemMap[int(objectId)].ObjectName,
+						leftTime/60,
+						time.Unix(pushTime, 0).Format("2006-01-02 15:04:05"),
+					))
+					msgChain = append(msgChain, m)
+				}
+			}
+			ctx.Send(msgChain)
 		}
 
 	})

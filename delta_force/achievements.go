@@ -6,10 +6,10 @@ func GetAchievements(qqid string) ([]byte, error) {
 		return nil, err
 	}
 	return Reqest(ck, map[string]string{
-		"iChartId":  "384918",
-		"sIdeToken": "mbq5GZ",
-		"method":    "dist.contents",
+		"iChartId":  "316969",
+		"sIdeToken": "NoOapI",
+		"method":    "dfm/center.person.resource",
 		"source":    "5",
-		"param":     `{"distType":"bannerManage","contentType":"secretDay"}`,
+		"param":     `{"resourceType":"sol","seasonid":[1,2,3,4],"isAllSeason":true}`,
 	})
 }
