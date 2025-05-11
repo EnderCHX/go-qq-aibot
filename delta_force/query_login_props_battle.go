@@ -5,7 +5,7 @@ import (
 )
 
 // 查询类型（1：登录，2：道具，3：货币,4:战绩）
-func GetBattle(qqid string, page int, type_ int) ([]byte, error) {
+func GetLoginPropsMoneyBattle(qqid string, page int, type_ int) ([]byte, error) {
 	ck, err := GetCookie(qqid)
 	if err != nil {
 		return nil, err

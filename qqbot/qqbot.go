@@ -28,6 +28,10 @@ func init() {
 
 	s := search.NewSearXNG(c.WebSearch.ApiUrl)
 
+	zero.OnCommand("状态").Handle(func(ctx *zero.Ctx) {
+		ctx.Send(fmt.Sprintf("状态：%s", time.Now().Format("2006-01-02 15:04:05")))
+	})
+
 	zero.OnMessage().Handle(func(ctx *zero.Ctx) {
 		if ctx.Event.IsToMe {
 
@@ -96,14 +100,15 @@ func init() {
 				message.Text("命令前缀为\"df\"、\"△\"、\"三角洲\"\n"),
 				message.Text("用法: 命令前缀加以下命令：\n"),
 				message.Text("1. 设置ck\n"),
-				message.Text("2. 密码\n"),
-				message.Text("3. 近日收益\n"),
-				message.Text("4. 战绩\n"),
-				message.Text("5. 大红\n"),
-				message.Text("6. 登录记录(page int)\n"),
-				message.Text("7. 道具(page int)\n"),
-				message.Text("8. 哈夫币(page int)\n"),
-				message.Text("9. 战局(page int)\n"),
+				message.Text("2. ck帮助"),
+				message.Text("3. 密码\n"),
+				message.Text("4. 近日收益\n"),
+				message.Text("5. 战绩\n"),
+				message.Text("6. 大红\n"),
+				message.Text("7. 登录记录(page int)\n"),
+				message.Text("8. 道具(page int)\n"),
+				message.Text("9. 哈夫币(page int)\n"),
+				message.Text("10. 战局(page int)\n"),
 			})
 		}
 
@@ -119,6 +124,15 @@ func init() {
 				return
 			}
 			ctx.Send("设置成功")
+		}
+
+		if match, err := regexp.MatchString("^ck帮助$", msg); err == nil && match {
+			ctx.SendChain(
+				message.Reply(ctx.Event.MessageID),
+				message.Text("浏览器打开 https://df.qq.com/cp/a20241230webmp/index.html, 登录账号\n"),
+				message.Text("登录后按f12打开开发者选项, 找到如下请求，复制cookie"),
+				message.Image("https://img.020928.xyz/img/df_ck_help.png"),
+			)
 		}
 
 		if match, err := regexp.MatchString("^大红$", msg); err == nil && match {
@@ -305,7 +319,7 @@ func init() {
 				}
 			}()
 
-			data, err := df.GetBattle(fmt.Sprint(ctx.Event.UserID), page, 1)
+			data, err := df.GetLoginPropsMoneyBattle(fmt.Sprint(ctx.Event.UserID), page, 1)
 
 			if err != nil {
 				ctx.SendChain(
@@ -378,7 +392,7 @@ func init() {
 				}
 			}()
 
-			data, err := df.GetBattle(fmt.Sprint(ctx.Event.UserID), page, 2)
+			data, err := df.GetLoginPropsMoneyBattle(fmt.Sprint(ctx.Event.UserID), page, 2)
 
 			if err != nil {
 				ctx.SendChain(
@@ -448,7 +462,7 @@ func init() {
 				}
 			}()
 
-			data, err := df.GetBattle(fmt.Sprint(ctx.Event.UserID), page, 3)
+			data, err := df.GetLoginPropsMoneyBattle(fmt.Sprint(ctx.Event.UserID), page, 3)
 
 			if err != nil {
 				ctx.SendChain(
@@ -513,7 +527,7 @@ func init() {
 				}
 			}()
 
-			data, err := df.GetBattle(fmt.Sprint(ctx.Event.UserID), page, 4)
+			data, err := df.GetLoginPropsMoneyBattle(fmt.Sprint(ctx.Event.UserID), page, 4)
 
 			if err != nil {
 				ctx.SendChain(
@@ -601,6 +615,71 @@ func init() {
 			}
 			ctx.Send(msgChain)
 		}
+
+		//if match, err := regexp.MatchString("^最近带出$", msg); err == nil && match {
+		//	pages := 100
+		//	type dataS struct {
+		//		data []byte
+		//		ok   chan struct{}
+		//	}
+		//	data := make([]dataS, pages)
+		//	for i := 0; i < pages; i++ {
+		//		data[i] = dataS{
+		//			ok: make(chan struct{}),
+		//		}
+		//		go func() {
+		//			data[i].data, err = df.GetLoginPropsMoneyBattle(fmt.Sprint(ctx.Event.UserID), i+1, 2)
+		//			data[i].ok <- struct{}{}
+		//		}()
+		//	}
+		//	if err != nil {
+		//		ctx.SendChain(
+		//			message.Reply(ctx.Event.MessageID),
+		//			message.Text("失败: "+err.Error()),
+		//		)
+		//		return
+		//	}
+		//
+		//	msgChain := []message.Segment{
+		//		message.Reply(ctx.Event.MessageID),
+		//	}
+		//	mtx := &sync.Mutex{}
+		//	wg := &sync.WaitGroup{}
+		//	for i := 0; i < pages; i++ {
+		//		wg.Add(1)
+		//		go func() {
+		//			<-data[i].ok
+		//			fmt.Println(i)
+		//			itemArr, _ := sonic.Get(data[i].data, "jData", "data", "itemArr")
+		//			fmt.Println(itemArr)
+		//			itemArrLen := func() int {
+		//				itemArrArr, _ := itemArr.Array()
+		//				return len(itemArrArr)
+		//			}()
+		//			for j := 0; j < itemArrLen; j++ {
+		//				iGoodsId, _ := itemArr.Index(j).Get("iGoodsId").Int64()
+		//				AddOrReduce, _ := itemArr.Index(j).Get("AddOrReduce").String()
+		//				Reason, _ := itemArr.Index(j).Get("Reason").String()
+		//				Reason, _ = url.QueryUnescape(Reason)
+		//				if item.ItemMap[int(iGoodsId)].Grade >= 6 && AddOrReduce == "+1" {
+		//					dtEventTime, _ := itemArr.Index(j).Get("dtEventTime").String()
+		//					m := message.Text(fmt.Sprintf("%v(%v)+1 at %v %v\n",
+		//						item.ItemMap[int(iGoodsId)].ObjectName,
+		//						item.ItemMap[int(iGoodsId)].AvgPrice,
+		//						dtEventTime,
+		//						Reason,
+		//					))
+		//					mtx.Lock()
+		//					msgChain = append(msgChain, m)
+		//					mtx.Unlock()
+		//				}
+		//			}
+		//			wg.Done()
+		//		}()
+		//	}
+		//	wg.Wait()
+		//	ctx.Send(msgChain)
+		//}
 
 	})
 

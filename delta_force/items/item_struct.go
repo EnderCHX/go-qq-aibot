@@ -3,6 +3,7 @@ package item
 import (
 	_ "embed"
 	"github.com/bytedance/sonic"
+	"os"
 )
 
 //go:embed items.json
@@ -95,8 +96,11 @@ func init() {
 		panic(err)
 	}
 	sonic.Unmarshal(listRaw, &items)
-
+	itemNameIdMap := map[string]int{}
 	for _, item := range items {
 		ItemMap[item.ObjectId] = item
+		itemNameIdMap[item.ObjectName] = item.ObjectId
 	}
+	data, _ := sonic.Marshal(itemNameIdMap)
+	os.WriteFile("item_name_id_map.json", data, 0644)
 }
