@@ -3,6 +3,13 @@ package qqbot
 import (
 	"errors"
 	"fmt"
+	"net/url"
+	"os/exec"
+	"regexp"
+	"strconv"
+	"strings"
+	"time"
+
 	"github.com/EnderCHX/go-qq-aibot/ai/chat"
 	"github.com/EnderCHX/go-qq-aibot/config"
 	df "github.com/EnderCHX/go-qq-aibot/delta_force"
@@ -14,11 +21,6 @@ import (
 	zero "github.com/wdvxdr1123/ZeroBot"
 	"github.com/wdvxdr1123/ZeroBot/driver"
 	"github.com/wdvxdr1123/ZeroBot/message"
-	"net/url"
-	"regexp"
-	"strconv"
-	"strings"
-	"time"
 )
 
 func init() {
@@ -29,7 +31,13 @@ func init() {
 	s := search.NewSearXNG(c.WebSearch.ApiUrl)
 
 	zero.OnCommand("状态").Handle(func(ctx *zero.Ctx) {
-		ctx.Send(fmt.Sprintf("状态：%s", time.Now().Format("2006-01-02 15:04:05")))
+		neofetch := exec.Command("neofetch", "--off", "--stdout")
+		out, err := neofetch.CombinedOutput()
+		if err != nil {
+			ctx.Send("获取状态失败")
+			return
+		}
+		ctx.Send(string(out))
 	})
 
 	zero.OnMessage().Handle(func(ctx *zero.Ctx) {
