@@ -92,11 +92,11 @@ func init() {
 
 		msg := ctx.MessageString()
 
-		if match, err := regexp.MatchString("^df*", msg); err == nil && match {
+		if match, err := regexp.MatchString("^df(.+)$", msg); err == nil && match {
 			msg = msg[len("df"):]
-		} else if match, err := regexp.MatchString("^△*", msg); err == nil && match {
+		} else if match, err := regexp.MatchString("^△(.+)$", msg); err == nil && match {
 			msg = msg[len("△"):]
-		} else if match, err := regexp.MatchString("^三角洲*", msg); err == nil && match {
+		} else if match, err := regexp.MatchString("^三角洲(.+)$", msg); err == nil && match {
 			msg = msg[len("三角洲"):]
 		} else {
 			return
